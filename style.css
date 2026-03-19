@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+.sub {
+  margin-top: 0;
+  color: #6b7280;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.checkbox input {
+  width: auto;
+}
+
+button {
+  margin-top: 18px;
+  margin-right: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #b91c1c;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+.big {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.result {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

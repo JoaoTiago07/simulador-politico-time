@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário do Simulador Político</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>Calendário do Simulador Político</h1>
+    <p class="sub">Converte a data real na data do RP.</p>
+
+    <section class="card">
+      <h2>Configuração</h2>
+
+      <label for="daysPerYear">Dias reais por ano RP</label>
+      <input id="daysPerYear" type="number" min="1" step="1" value="14" />
+
+      <label for="lastDateChange">Última alteração da data RP</label>
+      <input id="lastDateChange" type="date" />
+
+      <label for="lastDateEpoch">Data RP definida nessa alteração</label>
+      <input id="lastDateEpoch" type="date" />
+
+      <label class="checkbox">
+        <input id="fixedYears" type="checkbox" checked />
+        Usar anos fixos
+      </label>
+
+      <button onclick="applySettings()">Aplicar definições</button>
+      <button onclick="copySettingsLink()">Copiar link das definições</button>
+    </section>
+
+    <section class="card">
+      <h2>Data RP atual</h2>
+      <div id="currentRpDate" class="big"></div>
+    </section>
+
+    <section class="card">
+      <h2>Consultar uma data específica</h2>
+
+      <label for="singleDate">Data real</label>
+      <input id="singleDate" type="date" />
+
+      <label for="singleTime">Hora real</label>
+      <input id="singleTime" type="time" value="12:00" />
+
+      <label for="singleOffset">Offset GMT</label>
+      <input id="singleOffset" type="number" step="1" value="0" />
+
+      <button onclick="getSingleRPTime()">Calcular data RP</button>
+
+      <div id="singleRpDate" class="result"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
