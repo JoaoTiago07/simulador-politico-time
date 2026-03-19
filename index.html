@@ -7,20 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrap">
-    <h1>Calendário do Simulador Político</h1>
-    <p class="sub">Converte a data real na data do RP.</p>
+  <header class="topbar">
+    <div class="panel">
+      <h3>Definições</h3>
 
-    <section class="card">
-      <h2>Configuração</h2>
-
-      <label for="daysPerYear">Dias reais por ano RP</label>
+      <label>Dias reais por ano RP</label>
       <input id="daysPerYear" type="number" min="1" step="1" value="14" />
 
-      <label for="lastDateChange">Última alteração da data RP</label>
+      <label>Última alteração da data RP</label>
       <input id="lastDateChange" type="date" />
 
-      <label for="lastDateEpoch">Data RP definida nessa alteração</label>
+      <label>Data RP definida nessa alteração</label>
       <input id="lastDateEpoch" type="date" />
 
       <label class="checkbox">
@@ -28,32 +25,38 @@
         Usar anos fixos
       </label>
 
-      <button onclick="applySettings()">Aplicar definições</button>
-      <button onclick="copySettingsLink()">Copiar link das definições</button>
-    </section>
+      <div class="actions">
+        <button onclick="applySettings()">Aplicar</button>
+        <button onclick="copySettingsLink()">Copiar link</button>
+      </div>
+    </div>
 
-    <section class="card">
-      <h2>Data RP atual</h2>
-      <div id="currentRpDate" class="big"></div>
-    </section>
+    <div class="panel">
+      <h3>Consultar data específica</h3>
 
-    <section class="card">
-      <h2>Consultar uma data específica</h2>
-
-      <label for="singleDate">Data real</label>
+      <label>Data real</label>
       <input id="singleDate" type="date" />
 
-      <label for="singleTime">Hora real</label>
+      <label>Hora real</label>
       <input id="singleTime" type="time" value="12:00" />
 
-      <label for="singleOffset">Offset GMT</label>
+      <label>Offset GMT</label>
       <input id="singleOffset" type="number" step="1" value="0" />
 
-      <button onclick="getSingleRPTime()">Calcular data RP</button>
+      <div class="actions">
+        <button onclick="getSingleRPTime()">Calcular</button>
+      </div>
 
-      <div id="singleRpDate" class="result"></div>
-    </section>
-  </div>
+      <div id="singleRpDate" class="small-result"></div>
+    </div>
+  </header>
+
+  <main class="clock-wrap">
+    <div class="clock-box">
+      <div class="clock-label">A data e hora do RP é</div>
+      <div id="currentRpDate" class="clock-time"></div>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>

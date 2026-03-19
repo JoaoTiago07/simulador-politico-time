@@ -3,10 +3,10 @@ const params = new URLSearchParams(window.location.search);
 let daysPerYear = params.get("daysperyear") ? Number(params.get("daysperyear")) : 14;
 let lastDateChange = params.get("lastdatechange")
   ? Number(params.get("lastdatechange"))
-  : Date.parse("2025-09-01");
+  : 1773878400000; // 19/03/2026
 let lastDateEpoch = params.get("lastdateepoch")
   ? Number(params.get("lastdateepoch"))
-  : Date.parse("2044-07-01");
+  : 1814400000000; // 01/07/2027
 let fixedYears = params.get("fixedyears")
   ? params.get("fixedyears") === "true"
   : true;
@@ -61,16 +61,17 @@ function getTimeOf(irlDate) {
 }
 
 function formatDate(date) {
-  return date.toLocaleString("pt-PT", {
-    weekday: "long",
+  return date.toLocaleString("en-GB", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
     year: "numeric",
-    month: "long",
-    day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-    timeZone: "UTC"
-  }) + " UTC";
+    timeZone: "UTC",
+    hour12: false
+  }) + " GMT";
 }
 
 function updateCurrentRpTime() {
