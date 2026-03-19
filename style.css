@@ -24,36 +24,36 @@ body {
 
 .topbar {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: flex-start;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 8px 18px;
   background: linear-gradient(to bottom, var(--bg-top), #132532);
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
 
 .panel {
-  min-width: 280px;
-  max-width: 360px;
+  min-width: 260px;
+  max-width: 330px;
 }
 
 .panel h3 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
+  margin: 0 0 6px 0;
+  font-size: 0.98rem;
   color: #ffffff;
 }
 
 label {
   display: block;
-  margin: 6px 0 3px;
-  font-size: 0.85rem;
+  margin: 5px 0 2px;
+  font-size: 0.82rem;
   color: var(--muted);
 }
 
 input {
   width: 100%;
-  padding: 6px 8px;
+  padding: 5px 8px;
   background: rgba(255,255,255,0.06);
   color: white;
   border: 1px solid var(--border);
@@ -65,11 +65,11 @@ input {
   display: flex;
   gap: 6px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .actions {
-  margin-top: 8px;
+  margin-top: 6px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -82,7 +82,7 @@ button {
   border: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
 }
 
 button:hover {
@@ -90,36 +90,39 @@ button:hover {
 }
 
 .clock-wrap {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 105px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 24px 40px;
+  padding: 16px 24px 36px;
 }
 
 .clock-box {
   width: 100%;
   max-width: 1400px;
+  text-align: center;
 }
 
 .clock-label {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin-bottom: 18px;
   color: #dbe5eb;
-  text-align: left;
+  text-align: center;
 }
 
 .clock-time {
   font-family: "Share Tech Mono", monospace;
-  font-size: clamp(4rem, 8vw, 8.5rem);
-  line-height: 1.05;
-  letter-spacing: 0.03em;
+  font-size: clamp(3.2rem, 7vw, 7rem);
+  line-height: 1.12;
+  letter-spacing: 0.02em;
   color: #f1f5f9;
   white-space: pre-line;
+  text-align: center;
+  word-break: keep-all;
 }
 
 .small-result {
-  margin-top: 14px;
+  margin-top: 10px;
   color: #d7e2ea;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }

@@ -61,23 +61,22 @@ function getTimeOf(irlDate) {
 }
 
 function formatDate(date) {
-  const data = date.toLocaleDateString("pt-PT", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC"
-  });
+  const dias = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
+  const meses = [
+    "jan", "fev", "mar", "abr", "mai", "jun",
+    "jul", "ago", "set", "out", "nov", "dez"
+  ];
 
-  const hora = date.toLocaleTimeString("pt-PT", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-    timeZone: "UTC"
-  });
+  const diaSemana = dias[date.getUTCDay()];
+  const dia = String(date.getUTCDate()).padStart(2, "0");
+  const mes = meses[date.getUTCMonth()];
+  const ano = date.getUTCFullYear();
 
-  return `${data}\n${hora} UTC`;
+  const hora = String(date.getUTCHours()).padStart(2, "0");
+  const minuto = String(date.getUTCMinutes()).padStart(2, "0");
+  const segundo = String(date.getUTCSeconds()).padStart(2, "0");
+
+  return `${diaSemana}, ${dia} ${mes} ${ano}\n${hora}:${minuto}:${segundo} UTC`;
 }
 
 function updateCurrentRpTime() {
@@ -108,4 +107,4 @@ function getSingleRPTime() {
 
 fillInputs();
 updateCurrentRpTime();
-setInterval(updateCurrentRpTime, 100);
+setInterval(updateCurrentRpTime, 1);
