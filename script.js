@@ -33,31 +33,42 @@ function applySettings() {
 }
 
 function getTimeOf(irlDate) {
-  if (!fixedYears) {
-    return new Date(
-      Math.floor((365 / daysPerYear) * (irlDate - lastDateChange) + lastDateEpoch)
-    );
+  const weekMs = 7 * 24 * 60 * 60 * 1000;
+
+  // Âncora do simulador
+  const realStart = Date.UTC(2026, 1, 23, 0, 0, 0); // 23 fev 2026
+  const rpStartYear = 2026;
+
+  const diff = irlDate - realStart;
+
+  // Semanas completas desde o arranque
+  const completedWeeks = Math.floor(diff / weekMs);
+
+  // Progresso dentro da semana atual
+  const weekProgress = ((diff % weekMs) + weekMs) % weekMs / weekMs;
+
+  // Cada semana representa meio ano
+  const completedHalfYears = completedWeeks;
+
+  const yearOffset = Math.floor(completedHalfYears / 2);
+  const isSecondSemester = completedHalfYears % 2 === 1;
+
+  const rpYear = rpStartYear + yearOffset;
+
+  let semesterStart, semesterEnd;
+
+  if (!isSecondSemester) {
+    // 1.º semestre: 1 jan -> 1 jul
+    semesterStart = Date.UTC(rpYear, 0, 1, 0, 0, 0);
+    semesterEnd = Date.UTC(rpYear, 6, 1, 0, 0, 0);
+  } else {
+    // 2.º semestre: 1 jul -> 1 jan do ano seguinte
+    semesterStart = Date.UTC(rpYear, 6, 1, 0, 0, 0);
+    semesterEnd = Date.UTC(rpYear + 1, 0, 1, 0, 0, 0);
   }
 
-  const day = 86400000;
-  const timeDifference = irlDate - lastDateChange;
-  const years = timeDifference / (day * daysPerYear);
-  const yearCount = Math.floor(years);
-
-  const baseDate = new Date(lastDateEpoch);
-
-  const earlyDateObj = new Date(baseDate);
-  earlyDateObj.setFullYear(baseDate.getFullYear() + yearCount);
-  const earlyDate = earlyDateObj.getTime();
-
-  const latestDateObj = new Date(baseDate);
-  latestDateObj.setFullYear(baseDate.getFullYear() + yearCount + 1);
-  const latestDate = latestDateObj.getTime();
-
-  const yearLength = latestDate - earlyDate;
-  const rest = (years - yearCount) * yearLength;
-
-  return new Date(earlyDate + rest);
+  const rpTime = semesterStart + (semesterEnd - semesterStart) * weekProgress;
+  return new Date(rpTime);
 }
 
 function formatDate(date) {
