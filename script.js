@@ -61,17 +61,23 @@ function getTimeOf(irlDate) {
 }
 
 function formatDate(date) {
-  return date.toLocaleString("en-GB", {
-    weekday: "short",
+  const data = date.toLocaleDateString("pt-PT", {
+    weekday: "long",
     day: "2-digit",
-    month: "short",
+    month: "long",
     year: "numeric",
+    timeZone: "UTC"
+  });
+
+  const hora = date.toLocaleTimeString("pt-PT", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-    timeZone: "UTC",
-    hour12: false
-  }) + " GMT";
+    hour12: false,
+    timeZone: "UTC"
+  });
+
+  return `${data}\n${hora} UTC`;
 }
 
 function updateCurrentRpTime() {
@@ -102,4 +108,4 @@ function getSingleRPTime() {
 
 fillInputs();
 updateCurrentRpTime();
-setInterval(updateCurrentRpTime, 1000);
+setInterval(updateCurrentRpTime, 100);
